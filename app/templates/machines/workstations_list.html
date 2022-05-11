@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+List of Workstations
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>Workstations</h1>
+    <hr>
+    {% for station in object_list %}
+    <a href="{{station.get_absolute_url}}">
+        <div class="card rounded-3 shadow">
+            <div class="card-body">
+                {{station.w_name}}
+            </div>
+        </div>
+    </a>
+    {% empty %}
+    <p class="text-center">No workstation</p>
+    {% endfor %}
+
+</div>
+{% endblock content %}

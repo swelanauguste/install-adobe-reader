@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+Add a workstation
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>Add a workstation</h1>
+    <hr>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-4">
+                <form class="mb-5"
+                    action=""
+                    method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button class="px-5 btn btn-sm btn-outline-dark"
+                        type="submit"><i
+                            class="bi bi-arrow-right-circle"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
