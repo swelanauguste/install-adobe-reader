@@ -20,7 +20,7 @@ class Workstation(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.muid)
+            self.slug = slugify(self.w_name)
         super(Workstation, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
