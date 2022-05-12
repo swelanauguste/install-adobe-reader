@@ -28,3 +28,10 @@ class Workstation(models.Model):
 
     def __str__(self):
         return self.w_name
+
+class Belarc(models.Model):
+    file_name = models.CharField(max_length=100)
+    file = models.FileField(upload_to="install_belarc/", blank=True)
+    
+    def __str__(self):
+        return self.file_name

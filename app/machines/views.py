@@ -1,6 +1,6 @@
 from django.views.generic import CreateView, DetailView, ListView
 
-from .models import Workstation
+from .models import Belarc, Workstation
 
 
 class WorkstationListView(ListView):
@@ -22,3 +22,8 @@ class WorkstationCreateView(CreateView):
         "network_speed",
         "is_installed",
     ]
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(WorkstationCreateView, self).get_context_data(*args, **kwargs)
+        context["belarc"] = Belarc.objects.last()
+        return context
