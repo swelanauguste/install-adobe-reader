@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+{{object.w_name|upper}} - Workstation
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>{{object.w_name|upper}}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="text-center">Workstation Details</h2>
+            <div class="card shadow">
+                <p class="card-header">
+                    <span class="fw-bold">Computer name:
+                    </span>{{object.w_name}}
+                </p>
+                <div class="card-body">
+
+                    <p class="card-text">
+                        <span class="fw-bold">Antivirus:
+                        </span>{{object.anti_virus|default:"Nothing"}}
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-bold">Operating System:
+                        </span>{{object.os_build}}
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-bold">Installed:
+                        </span>{{object.installed|default:"Nothing"}}
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-bold">NIC Speed: </span>
+                        {{object.network_speed|default:"Nothing"}}
+                    </p>
+                    <p class="card-text">
+                        <span class="fw-bold">Adobe Reader: </span>
+                        {{object.is_installed|yesno:"Installed,Not installed"}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="text-center">Belarc File</h2>
+            <div class="card shadow">
+                <iframe
+                    src="{{object.belarc_file.url}}#toolbar=0&navpanes=0&scrollbar=0"
+                    height="600"
+                    width="648"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

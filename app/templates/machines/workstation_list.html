@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+List of Workstations
+{% endblock head_title %}
+
+
+
+{% block content %}
+<div class="container">
+    <h1>Workstations</h1>
+    <hr>
+    {% for station in object_list %}
+    <a class="text-decoration-none text-black"
+        href="{{station.get_absolute_url}}">
+        <div class="d-flex shadow px-2 pt-3">
+            <p>{{ forloop.counter }} | </p>
+            <p class="">{{station.w_name}} |</p>
+            <p class=""> {{station.anti_virus|truncatechars:39|default:"-"}} |</p>
+            <p class="">{{station.os_build|truncatechars:39}} |</p>
+            <p class="">{{station.is_installed|yesno:"Adobe Reader is              installed,Adobe Reader not installed"}}</p>
+        </div>
+    </a>
+    {% empty %}
+    <p class="text-center">No workstation</p>
+    {% endfor %}
+
+</div>
+{% endblock content %}

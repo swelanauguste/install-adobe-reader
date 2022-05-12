@@ -5,8 +5,10 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
-class Workstations(models.Model):
-    muid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
+class Workstation(models.Model):
+    muid = models.UUIDField(
+        default=uuid.uuid4, editable=False, unique=True, primary_key=True
+    )
     w_name = models.CharField("workstation name", max_length=9, blank=True)
     slug = models.SlugField(max_length=9, unique=True, blank=True)
     belarc_file = models.FileField(upload_to="belarc_files/", blank=True)
@@ -19,7 +21,7 @@ class Workstations(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.muid)
-        super(Workstations, self).save(*args, **kwargs)
+        super(Workstation, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("machines:detail", kwargs={"pk": self.pk, "slug": self.slug})

@@ -1,18 +1,18 @@
 from django.views.generic import CreateView, DetailView, ListView
 
-from .models import Workstations
+from .models import Workstation
 
 
-class WorkstationsListView(ListView):
-    model = Workstations
+class WorkstationListView(ListView):
+    model = Workstation
 
 
-class WorkstationsDetailView(DetailView):
-    model = Workstations
+class WorkstationDetailView(DetailView):
+    model = Workstation
 
 
-class WorkstationsCreateView(CreateView):
-    model = Workstations
+class WorkstationCreateView(CreateView):
+    model = Workstation
     fields = [
         "w_name",
         "belarc_file",

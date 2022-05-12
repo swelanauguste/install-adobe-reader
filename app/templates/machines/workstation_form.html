@@ -21,9 +21,11 @@ Add a workstation
                     enctype="multipart/form-data">
                     {% csrf_token %}
                     {{form|crispy}}
-                    <button class="px-5 btn btn-sm btn-outline-dark"
-                        type="submit"><i
-                            class="bi bi-arrow-right-circle"></i></button>
+                    <div class="text-center">
+                        <button title="submit" class="px-5 btn btn-outline-dark mt-3"
+                            type="submit"><i
+                                class="bi bi-caret-up fs-4"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
