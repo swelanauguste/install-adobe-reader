@@ -1,17 +1,21 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView
+from hitcount.views import HitCountDetailView, HitCountMixin
 
 from .models import Belarc, Workstation
 
 
-class WorkstationListView(ListView):
+class WorkstationListView(HitCountMixin, ListView):
     model = Workstation
+    count_hit = True
 
 
-class WorkstationDetailView(DetailView):
+class WorkstationDetailView(HitCountDetailView):
     model = Workstation
+    count_hit = True
 
 
-class WorkstationCreateView(CreateView):
+class WorkstationCreateView(LoginRequiredMixin, CreateView):
     model = Workstation
     fields = [
         "w_name",
